@@ -1,0 +1,798 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+    <link href="https://s3-eu-west-1.amazonaws.com/tag-public-assets/images/favicon/favicon-32x32.png" rel="icon" type="image/png" />
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;Shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="Shell">Shell</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#enrichment" class="toc-h1 toc-link" data-title="Enrichment">Enrichment</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#combined" class="toc-h2 toc-link" data-title="Combined">Combined</a>
+                  </li>
+                  <li>
+                    <a href="#company" class="toc-h2 toc-link" data-title="Company">Company</a>
+                  </li>
+                  <li>
+                    <a href="#person" class="toc-h2 toc-link" data-title="Person">Person</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='mailto:digital@talentgarden.org?subject=API key request'>Request an API key</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Talent Garden API! You can use our API endpoints, which can offer to you a set of tools that you can use to build new products.</p>
+
+<p>We have language bindings in Shell and you can view code examples in the dark area to the right.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>YOUR_API_KEY</code> with your API key.</p>
+</blockquote>
+
+<p>Talent Garden uses API keys to allow access to the API. You can request an API key <a href='mailto:digital@talentgarden.org?subject=API key request'>getting in touch with us</a>.</p>
+
+<p>Talent Garden expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: YOUR_API_KEY</code></p>
+
+<aside class="notice">
+You must replace <code>YOUR_API_KEY</code> with your personal API key.
+</aside>
+<h1 id='enrichment'>Enrichment</h1>
+<p>The Enrichment API lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.</p>
+<h2 id='combined'>Combined</h2>
+<p>A common use-case is looking up a person and company simultaneously based on a email address. To save you making two requests to do this, we offer a combined lookup API.</p>
+
+<p>This endpoint expects an email address, and will return an object containing both the person and company (if found). A call to the combined lookup will only count as one API call.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/combined?email=davide.dattoli@talentgarden.org"</span>
+  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"person"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d5d98b6-7703-425c-8087-d04ea335216d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davide Dattoli"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davide"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dattoli"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davide.dattoli@talentgarden.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vatican"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utcOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"geo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stateCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.87194</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.56738</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The best way to predict the future is to invent it. - President of @TalentGardenen Shaping a new way of Work, Learn and Connect"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.davidedattoli.it"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1ts43dypk8bqh.cloudfront.net/v1/avatars/1d5d98b6-7703-425c-8087-d04ea335216d"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"employment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgarden.org"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO, Talent Garden, Talent Garden"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ceo"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"seniority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"executive"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davidedattoli"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"github"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"blog"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"following"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davidedattoli"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14523150</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The best way to predict the future is to invent it. - President of @TalentGardenen Shaping a new way of Work, Learn and Connect"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">10609</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"following"</span><span class="p">:</span><span class="w"> </span><span class="mi">1331</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="mi">19904</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"favorites"</span><span class="p">:</span><span class="w"> </span><span class="mi">4179</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brescia ✈ Milan ✈ New York"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.davidedattoli.it"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/2539077588/1h7p22673pueqyq9ds9k.png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in/davidedattoli"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"googleplus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"aboutme"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"gravatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"urls"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatars"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"fuzzy"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"emailProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"indexedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-10T03:40:25.307Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b0524b2-9c2d-4988-990e-afd5492f1673"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"legalName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgarden.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"domainAliases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"talentgarden.ie"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"talentgarden.es"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"talentgarden.at"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"talentgarden.co"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"talentgarden.co.uk"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+            </span><span class="s2">"emailAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"info@talentgarden.org"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"sector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Information Technology"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"industryGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software &amp; Services"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet Software &amp; Services"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subIndustry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sicCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"naicsCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Marketplace"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"B2B"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"B2C"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Internet"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden creates campuses to empower digital tech communities and connect them globally: coworking space, digital training, and networking. Join us!"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Cipro, 66, 25124 Brescia BS, Italy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Rome"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utcOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"geo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Cipro"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subPremise"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brescia"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25124"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lombardia"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"stateCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5246905</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.2104083</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/talentgarden.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgarden"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">57056</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company/talent-garden"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgardenen"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291422799"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The place for explorers and innovators. #TalentGarden"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">2459</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"following"</span><span class="p">:</span><span class="w"> </span><span class="mi">726</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://t.co/B91DTO9Gge"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/882185915665448965/8K9la42a_normal.jpg"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"crunchbase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organization/talent-garden"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"emailProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"usEIN"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"alexaUsRank"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"alexaGlobalRank"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"employeesRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51-250"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"marketCap"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"raised"</span><span class="p">:</span><span class="w"> </span><span class="mi">12990000</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"annualRevenue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"estimatedAnnualRevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10M-$50M"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fiscalYearEnd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"indexedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-25T06:47:29.859Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tech"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"mailchimp"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_apps"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"activecampaign"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_tag_manager"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facebook_advertiser"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"facebook_connect"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"nginx"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"wordpress"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_maps"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"youtube"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sumo"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"piwik"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"google_analytics"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hubspot"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all informations about a company.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.talentgarden.net/enrichment/v1/combined?email=:email</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>true</td>
+<td>the person’s email address</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+</aside>
+<h2 id='company'>Company</h2>
+<p>The Company API allows you to look up a company by their domain. Alongside the domain you may also provide any additional attributes you have about the company, such as their company name or twitter handle. Including more detail will help us be more accurate when searching.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/companies?domain=talentgarden.org"</span>
+  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6b0524b2-9c2d-4988-990e-afd5492f1673"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"legalName"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgarden.org"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"domainAliases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"talentgarden.ie"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"talentgarden.es"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"talentgarden.at"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"talentgarden.co"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"talentgarden.co.uk"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phoneNumbers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"emailAddresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"info@talentgarden.org"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"sector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Information Technology"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"industryGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software &amp; Services"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"industry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet Software &amp; Services"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subIndustry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internet"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sicCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"naicsCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"Marketplace"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"B2B"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"B2C"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Internet"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden creates campuses to empower digital tech communities and connect them globally: coworking space, digital training, and networking. Join us!"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"foundedYear"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Cipro, 66, 25124 Brescia BS, Italy"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Rome"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utcOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"geo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"streetNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"66"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"streetName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Cipro"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subPremise"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brescia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25124"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lombardia"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stateCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">45.5246905</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.2104083</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"logo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://logo.clearbit.com/talentgarden.org"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgarden"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"likes"</span><span class="p">:</span><span class="w"> </span><span class="mi">57056</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"company/talent-garden"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgardenen"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1291422799"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The place for explorers and innovators. #TalentGarden"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">2459</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"following"</span><span class="p">:</span><span class="w"> </span><span class="mi">726</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://t.co/B91DTO9Gge"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/882185915665448965/8K9la42a_normal.jpg"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"crunchbase"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"organization/talent-garden"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"emailProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"private"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"usEIN"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"alexaUsRank"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alexaGlobalRank"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"employees"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"employeesRange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51-250"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"marketCap"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"raised"</span><span class="p">:</span><span class="w"> </span><span class="mi">12990000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"annualRevenue"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"estimatedAnnualRevenue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$10M-$50M"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fiscalYearEnd"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"indexedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-25T06:47:29.859Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tech"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"mailchimp"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"google_apps"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"activecampaign"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"google_tag_manager"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"facebook_advertiser"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"facebook_connect"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nginx"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"wordpress"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"google_maps"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"youtube"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"sumo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"piwik"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"google_analytics"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hubspot"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all informations about a company.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.talentgarden.net/enrichment/v1/companies?domain=:domain</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domain</td>
+<td>true</td>
+<td>the company’s domain</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+</aside>
+<h2 id='person'>Person</h2>
+<p>The People API lets you retrieve social information associated with an email address, such as a person’s name, location and Twitter handle.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/people?email=davide.dattoli@talentgarden.org"</span>
+  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"options"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1d5d98b6-7703-425c-8087-d04ea335216d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"fullName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davide Dattoli"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"givenName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davide"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"familyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dattoli"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davide.dattoli@talentgarden.org"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Europe/Vatican"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"utcOffset"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"geo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stateCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">41.87194</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lng"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.56738</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The best way to predict the future is to invent it. - President of @TalentGardenen Shaping a new way of Work, Learn and Connect"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.davidedattoli.it"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d1ts43dypk8bqh.cloudfront.net/v1/avatars/1d5d98b6-7703-425c-8087-d04ea335216d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"employment"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"talentgarden.org"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO, Talent Garden, Talent Garden"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ceo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"seniority"</span><span class="p">:</span><span class="w"> </span><span class="s2">"executive"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davidedattoli"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"github"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"blog"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"following"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davidedattoli"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14523150</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The best way to predict the future is to invent it. - President of @TalentGardenen Shaping a new way of Work, Learn and Connect"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"followers"</span><span class="p">:</span><span class="w"> </span><span class="mi">10609</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"following"</span><span class="p">:</span><span class="w"> </span><span class="mi">1331</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"statuses"</span><span class="p">:</span><span class="w"> </span><span class="mi">19904</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"favorites"</span><span class="p">:</span><span class="w"> </span><span class="mi">4179</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brescia ✈ Milan ✈ New York"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"site"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.davidedattoli.it"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pbs.twimg.com/profile_images/2539077588/1h7p22673pueqyq9ds9k.png"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in/davidedattoli"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"googleplus"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"aboutme"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bio"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"gravatar"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"handle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"urls"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avatars"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"fuzzy"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"emailProvider"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"indexedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-10T03:40:25.307Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all informations about a person.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://api.talentgarden.net/enrichment/v1/people?email=:email</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>true</td>
+<td>the person’s email address</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+</aside>
+<h1 id='errors'>Errors</h1>
+<p>The Talent Garden API uses the following error codes:</p>
+
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request -- Your request is invalid.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found -- The specified kitten could not be found.</td>
+</tr>
+<tr>
+<td>405</td>
+<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+</tr>
+<tr>
+<td>503</td>
+<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="Shell">Shell</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
