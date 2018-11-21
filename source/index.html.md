@@ -36,7 +36,7 @@ Talent Garden uses API keys to allow access to the API. You can request an API k
 
 Talent Garden expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: YOUR_API_KEY`
+`x-api-key: YOUR_API_KEY`
 
 <aside class="notice">
 You must replace <code>YOUR_API_KEY</code> with your personal API key.
