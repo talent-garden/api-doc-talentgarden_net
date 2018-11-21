@@ -51,7 +51,7 @@ body {
 
 .toc-wrapper {
   transition: left 0.3s ease-in-out;
-
+  box-shadow: 1px 0 2px #eee;
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
@@ -77,8 +77,8 @@ body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 50%;
-    margin-left: 25%;
+    max-width: 100%;
+    margin-left: 0;
     margin-top: $logo-margin;
     margin-bottom: $logo-margin;
   }
@@ -384,7 +384,7 @@ body {
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
-    border-top: 1px solid #ccc;
+    // border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background-color: #fdfdfd;
   }
@@ -400,7 +400,7 @@ body {
     font-size: 19px;
     margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     padding-top: 1.2em;
     padding-bottom: 1.2em;
     background-image: linear-gradient(to bottom, rgba(#fff, 0.2), rgba(#fff, 0));
