@@ -61,8 +61,8 @@ body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 15px;
+  font-weight: 600;
 
   // language selector for mobile devices
   .lang-selector {
@@ -207,7 +207,7 @@ body {
 
 .toc-link,
 .toc-footer li {
-  padding: 0 $nav-padding 0 $nav-padding;
+  padding: 5px $nav-padding 5px $nav-padding;
   display: block;
   overflow-x: hidden;
   white-space: nowrap;

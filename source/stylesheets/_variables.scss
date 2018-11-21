@@ -44,7 +44,7 @@ $search-notice-bg: #c97a7e !default;
 // TEXT COLORS
 ////////////////////
 $main-text: #212529 !default; // main content text color
-$nav-text: #212529 !default;
+$nav-text: #4a4a4a !default;
 $nav-active-text: #FFF !default;
 $nav-active-parent-text: #fff !default; // parent links of the current section
 $lang-select-text: #fff !default; // color of unselected language tab text
@@ -88,8 +88,8 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 
 // OTHER
 ////////////////////
-$nav-footer-border-color: #666 !default;
-$search-box-border-color: #666 !default;
+$nav-footer-border-color: #4a4a4a !default;
+$search-box-border-color: #4a4a4a !default;
 
 
 ////////////////////////////////////////////////////////////////////////////////
