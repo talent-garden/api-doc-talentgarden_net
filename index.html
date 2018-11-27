@@ -239,6 +239,14 @@
               </ul>
           </li>
           <li>
+            <a href="#sms" class="toc-h1 toc-link" data-title="SMS">SMS</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#message" class="toc-h2 toc-link" data-title="Message">Message</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -274,14 +282,17 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </aside>
+
+<p>Some of our API endpoints, like for example the <a href="/#enrichment">Enrichment API</a>, can be used client side after that the domain has been whitelisted from us.<br>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] domain whitelist">Click here</a> to submit a request to whitelist your domain specifying what you are developing and how this access can help you to speed up the development process or to improve the user experience.</p>
 <h1 id='enrichment'>Enrichment</h1>
 <p>The Enrichment API lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.</p>
 <h2 id='combined'>Combined</h2>
 <p>A common use-case is looking up a person and company simultaneously based on a email address. To save you making two requests to do this, we offer a combined lookup API.</p>
 
 <p>This endpoint expects an email address, and will return an object containing both the person and company (if found). A call to the combined lookup will only count as one API call.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/combined?email=davide.dattoli@talentgarden.org"</span>
-  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/combined?email=davide.dattoli@talentgarden.org"</span> <span class="se">\</span>
+  --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -495,12 +506,12 @@ You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </tbody></table>
 
 <aside class="notice">
-This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
 <h2 id='company'>Company</h2>
 <p>The Company API allows you to look up a company by their domain. Alongside the domain you may also provide any additional attributes you have about the company, such as their company name or twitter handle. Including more detail will help us be more accurate when searching.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/companies?domain=talentgarden.org"</span>
-  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/companies?domain=talentgarden.org"</span> <span class="se">\</span>
+  --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -635,12 +646,12 @@ This API is private. If you don't have an API KEY <a mailto="digital@talentgarde
 </tbody></table>
 
 <aside class="notice">
-This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
 <h2 id='person'>Person</h2>
 <p>The People API lets you retrieve social information associated with an email address, such as a person’s name, location and Twitter handle.</p>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/people?email=davide.dattoli@talentgarden.org"</span>
-  -H <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/enrichment/v1/people?email=davide.dattoli@talentgarden.org"</span> <span class="se">\</span>
+  --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -742,8 +753,79 @@ This API is private. If you don't have an API KEY <a mailto="digital@talentgarde
 </tbody></table>
 
 <aside class="notice">
-This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
+<h1 id='sms'>SMS</h1>
+<p>Using SMS REST API, you can send outgoing SMS messages from an alphanumeric sender ID identifier to mobile phones around the globe.</p>
+
+<p>An alphanumeric sender ID of up to 11 characters can be used for sending messages. To use an alphanumeric sender ID for sending messages, input your ID in the <code>from</code> parameter of your API request.
+Alphanumeric Sender ID messages are one-way only, as users will be unable to directly reply to messages not sent from a phone number.</p>
+<h2 id='message'>Message</h2>
+<p>This endpoint allow you to send a new outgoing message from an alphanumeric ID to an outside number.</p>
+<pre class="highlight shell tab-shell"><code>curl https://api.talentgarden.net/sms/v1/messages <span class="se">\</span>
+  --request POST <span class="se">\</span>
+  --data <span class="s1">'{"from": "TagMilan","to": "+393334455666", "body": "Hi there, someone is waiting for you at the reception", "country": "IT"}'</span> <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"accountSid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACe216cab89d888c5cb280335ef76df4c3"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"apiVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2010-04-01"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hi there, someone is waiting for you at the reception"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dateCreated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-27T10:18:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dateUpdated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-27T10:18:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"dateSent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"direction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"outbound-api"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TagMilan"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"messagingServiceSid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"numMedia"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"numSegments"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"priceUnit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SM82743a9aab8f47259529a0776fe45eb4"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subresourceUris"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"media"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/2010-04-01/Accounts/ACe216cab89d888c5cb280335ef76df4c3/Messages/SM82743a9aab8f47259529a0776fe45eb4/Media.json"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+393334455666"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/2010-04-01/Accounts/ACe216cab89d888c5cb280335ef76df4c3/Messages/SM82743a9aab8f47259529a0776fe45eb4.json"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.talentgarden.net/sms/v1/messages</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from</td>
+<td>true</td>
+<td>this must be an alphanumeric ID</td>
+</tr>
+<tr>
+<td>to</td>
+<td>true</td>
+<td>this parameter determines the destination phone number for your SMS message. Format this number with a &#39;+&#39; and a country code, e.g., +16175551212 <a href="https://en.wikipedia.org/wiki/List_of_country_calling_codes" target="_blank">(E.164 format)</a></td>
+</tr>
+<tr>
+<td>body</td>
+<td>true</td>
+<td>the full text of the message you want to send. If the body of your message is more than 160 characters, we will send the message as a segmented SMS</td>
+</tr>
+<tr>
+<td>country</td>
+<td>true</td>
+<td>the ISO country code where is the campus that is sending the SMS. Right now only <code>IT</code> is allowed</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1>
 <p>The Talent Garden API uses the following error codes:</p>
 
