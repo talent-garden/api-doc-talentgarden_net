@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - enrichment
+  - sms
   - errors
 
 search: true
@@ -42,3 +43,5 @@ Talent Garden expects for the API key to be included in all API requests to the 
 You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </aside>
 
+Some of our API endpoints, like for example the <a href="/#enrichment">Enrichment API</a>, can be used client side after that the domain has been whitelisted from us.<br>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] domain whitelist">Click here</a> to submit a request to whitelist your domain specifying what you are developing and how this access can help you to speed up the development process or to improve the user experience.

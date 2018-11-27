@@ -8,8 +8,8 @@ This endpoint expects an email address, and will return an object containing bot
 
 
 ```shell
-curl "https://api.talentgarden.net/enrichment/v1/combined?email=davide.dattoli@talentgarden.org"
-  -H "x-api-key: YOUR_API_KEY"
+curl "https://api.talentgarden.net/enrichment/v1/combined?email=davide.dattoli@talentgarden.org" \
+  --header "x-api-key: YOUR_API_KEY"
 ```
 
 > The above command returns JSON structured like this:
@@ -219,7 +219,7 @@ Parameter | Required | Description
 email | true | the person’s email address
 
 <aside class="notice">
-This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
 
 
@@ -228,8 +228,8 @@ The Company API allows you to look up a company by their domain. Alongside the d
 
 
 ```shell
-curl "https://api.talentgarden.net/enrichment/v1/companies?domain=talentgarden.org"
-  -H "x-api-key: YOUR_API_KEY"
+curl "https://api.talentgarden.net/enrichment/v1/companies?domain=talentgarden.org" \
+  --header "x-api-key: YOUR_API_KEY"
 ```
 
 > The above command returns JSON structured like this:
@@ -360,15 +360,15 @@ Parameter | Required | Description
 domain | true | the company’s domain
 
 <aside class="notice">
-This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
 
 ## Person
 The People API lets you retrieve social information associated with an email address, such as a person’s name, location and Twitter handle.
 
 ```shell
-curl "https://api.talentgarden.net/enrichment/v1/people?email=davide.dattoli@talentgarden.org"
-  -H "x-api-key: YOUR_API_KEY"
+curl "https://api.talentgarden.net/enrichment/v1/people?email=davide.dattoli@talentgarden.org" \
+  --header "x-api-key: YOUR_API_KEY"
 ```
 
 > The above command returns JSON structured like this:
@@ -466,5 +466,5 @@ Parameter | Required | Description
 email | true | the person’s email address
 
 <aside class="notice">
-This API is private. If you don't have an API KEY <a mailto="digital@talentgarden.org">get in touch with us</a>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
