@@ -247,6 +247,17 @@
               </ul>
           </li>
           <li>
+            <a href="#validation" class="toc-h1 toc-link" data-title="Validation">Validation</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#iban" class="toc-h2 toc-link" data-title="IBAN">IBAN</a>
+                  </li>
+                  <li>
+                    <a href="#vat" class="toc-h2 toc-link" data-title="VAT">VAT</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -826,6 +837,229 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
 <td>the ISO country code where is the campus that is sending the SMS. Right now only <code>IT</code> is allowed</td>
 </tr>
 </tbody></table>
+<h1 id='validation'>Validation</h1>
+<p>The Validation API allow a data validation process that ensures the delivery of clean and clear data to the programs, applications and services using it. It checks for the integrity and validity of data in order to avoid human input mistakes.</p>
+<h2 id='iban'>IBAN</h2>
+<p>This API endpoint allows you to automate IBAN validation and perform the following:</p>
+
+<ul>
+<li>validate if an IBAN is valid using it’s check digits</li>
+<li>validate if an IBAN has valid domestic bank code and account number check digits *</li>
+<li>validate IBAN length for specific country</li>
+<li>validate IBAN structure/formatting for specific country</li>
+<li>validate IBAN characters ( check for non-alphanumeric characters )</li>
+<li>validate if country code supports IBAN standard</li>
+<li>identify the bank which issued the IBAN</li>
+<li>identify the country and country code of an IBAN</li>
+<li>identify address of the bank issued the IBAN</li>
+<li>identify bank’s BIC code</li>
+<li>identify bank’s SEPA support: B2B,COR1,SCC,SCT,SDD</li>
+</ul>
+
+<p>*Bank Code and Account Number validations are performed for certain banks and countries only.</p>
+
+<p>As you can see from the response in the dark area, the validation object is a structured object with different levels of validation. To simply the validation you can consider the root parameter <code>valid</code> that is <code>true</code> only if all the validation has been passed correctly, otherwise <code>false</code>.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/validation/v1/iban?iban=IT60X0542811101000000123456"</span> <span class="se">\</span>
+  --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bank_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"bic"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEPOIT21"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"branch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SEDE DI BERGAMO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bank"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B.POPDI BERGAMO-CRED.VARESINO FUS UNIONE DI BANCHE ITALIANE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PIAZZA VITTORIO VENETO, 8"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BERGAMO"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"zip"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24122"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"www"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Italy"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_iso"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000123456"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"bank_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"05428"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"branch_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11101"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"validations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"chars"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"006"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IBAN does not contain illegal characters"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"account"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"002"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account Number check digit is correct"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"iban"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"001"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IBAN Check digit is correct"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"structure"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"005"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IBAN structure is correct"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"length"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"003"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IBAN Length is correct"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"country_support"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"007"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Country supports IBAN standard"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"sepa_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"SCT"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YES"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SDD"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YES"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"COR1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YES"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"B2B"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YES"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"SCC"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NO"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint performs IBAN validation.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://api.talentgarden.net/validation/v1/iban?iban=:iban</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iban</td>
+<td>true</td>
+<td>the IBAN you want to validate</td>
+</tr>
+</tbody></table>
+<h3 id='codes'>Codes</h3>
+<p>The <code>validation</code> object is composed from multiple objects and each one with its own code, this is codes map:</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>001</td>
+<td>Validation Success</td>
+<td>IBAN Check digit is correct</td>
+</tr>
+<tr>
+<td>002</td>
+<td>Validation Success</td>
+<td>Account Number check digit is correct</td>
+</tr>
+<tr>
+<td>003</td>
+<td>Validation Success</td>
+<td>IBAN Length is correct</td>
+</tr>
+<tr>
+<td>004</td>
+<td>Validation Success</td>
+<td>Account Number check digit is not performed for this bank or branch</td>
+</tr>
+<tr>
+<td>005</td>
+<td>Validation Success</td>
+<td>IBAN structure is correct</td>
+</tr>
+<tr>
+<td>006</td>
+<td>Validation Success</td>
+<td>IBAN does not contain illegal characters</td>
+</tr>
+<tr>
+<td>007</td>
+<td>Validation Success</td>
+<td>Country supports IBAN standard</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Validation Failed</td>
+<td>Account Number check digit not correct</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Validation Failed</td>
+<td>IBAN Check digit not correct</td>
+</tr>
+<tr>
+<td>203</td>
+<td>Validation Failed</td>
+<td>IBAN Length is not correct</td>
+</tr>
+<tr>
+<td>205</td>
+<td>Validation Failed</td>
+<td>IBAN structure is not correct</td>
+</tr>
+<tr>
+<td>206</td>
+<td>Validation Failed</td>
+<td>IBAN contains illegal characters</td>
+</tr>
+<tr>
+<td>207</td>
+<td>Validation Failed</td>
+<td>Country does not support IBAN standard</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
+</aside>
+<h2 id='vat'>VAT</h2>
+<p>This API endpoint enabling you to validate VAT numbers and get company informations (if available).</p>
+
+<p>The API&#39;s response will consist of a number of different properties containing information about your query, the respective company results and whether or not the validation was successful.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/validation/v1/vat?vat=IT03340710981"</span> <span class="se">\</span>
+  --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"database"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ok"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"format_valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT03340710981"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03340710981"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TALENT GARDEN S.P.A"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIA MERANO 16 </span><span class="se">\n</span><span class="s2">20127 MILANO MI</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint performs VAT number validation.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://api.talentgarden.net/validation/v1/vat?vat=:vat</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vat</td>
+<td>true</td>
+<td>the VAT number with the 2-letter country code prefix</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+<a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
+</aside>
 <h1 id='errors'>Errors</h1>
 <p>The Talent Garden API uses the following error codes:</p>
 
