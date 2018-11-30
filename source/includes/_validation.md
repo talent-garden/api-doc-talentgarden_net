@@ -126,6 +126,9 @@ This API endpoint enabling you to validate VAT numbers and get company informati
 
 The API's response will consist of a number of different properties containing information about your query, the respective company results and whether or not the validation was successful.
 
+Since the address fields can have different structures or are missing at all (Germany & Spain), we decided to give back a normalized `address` object with all address fields separated. <br>
+The `address` object is obtained from the `company_address` so if it is empty the `address` object will be empty as well.
+
 ```shell
 curl "https://api.talentgarden.net/validation/v1/vat?vat=IT03340710981" \
   --header "x-api-key: YOUR_API_KEY"
@@ -142,7 +145,15 @@ curl "https://api.talentgarden.net/validation/v1/vat?vat=IT03340710981" \
 	"country_code": "IT",
 	"vat_number": "03340710981",
 	"company_name": "TALENT GARDEN S.P.A",
-	"company_address": "VIA MERANO 16 \n20127 MILANO MI\n"
+	"company_address": "VIA MERANO 16 \n20127 MILANO MI\n",
+	"address": {
+		"street_number": "16",
+		"route": "Via Merano",
+		"locality": "Milano",
+		"city": "MI",
+		"country": "IT",
+		"postal_code": "20127"
+	}
 }
 ```
 
