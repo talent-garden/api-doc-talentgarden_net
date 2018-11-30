@@ -1022,6 +1022,9 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
 <p>This API endpoint enabling you to validate VAT numbers and get company informations (if available).</p>
 
 <p>The API&#39;s response will consist of a number of different properties containing information about your query, the respective company results and whether or not the validation was successful.</p>
+
+<p>Since the address fields can have different structures or are missing at all (Germany &amp; Spain), we decided to give back a normalized <code>address</code> object with all address fields separated. <br>
+The <code>address</code> object is obtained from the <code>company_address</code> so if it is empty the <code>address</code> object will be empty as well.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/validation/v1/vat?vat=IT03340710981"</span> <span class="se">\</span>
   --header <span class="s2">"x-api-key: YOUR_API_KEY"</span>
 </code></pre>
@@ -1036,7 +1039,15 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
     </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"vat_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03340710981"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"company_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TALENT GARDEN S.P.A"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIA MERANO 16 </span><span class="se">\n</span><span class="s2">20127 MILANO MI</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+    </span><span class="s2">"company_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VIA MERANO 16 </span><span class="se">\n</span><span class="s2">20127 MILANO MI</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"street_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"route"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Via Merano"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Milano"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MI"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20127"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint performs VAT number validation.</p>
