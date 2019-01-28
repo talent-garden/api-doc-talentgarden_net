@@ -9,6 +9,7 @@ toc_footers:
 
 includes:
   - enrichment
+  - guests
   - sms
   - validation
   - errors
