@@ -239,6 +239,14 @@
               </ul>
           </li>
           <li>
+            <a href="#guests" class="toc-h1 toc-link" data-title="Guests">Guests</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#registration" class="toc-h2 toc-link" data-title="Registration">Registration</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#sms" class="toc-h1 toc-link" data-title="SMS">SMS</a>
               <ul class="toc-list-h2">
                   <li>
@@ -766,6 +774,84 @@ You must replace <code>YOUR_API_KEY</code> with your personal API key.
 <aside class="notice">
 <a href="mailto:digital@talentgarden.org?subject=[API Request] Enrichment domain whitelist">Submit a request</a> to whitelist your app domain in order to use this API client side, like for example to autocomplete a form.
 </aside>
+<h1 id='guests'>Guests</h1>
+<p>Guests REST API allows you to register one or more people that are visiting a campus member.</p>
+<h2 id='registration'>Registration</h2>
+<p>This endpoint allow you to create a new guest Registration.
+When a Registration is created, the campus member receives three different notifications based on informations we know about him.
+Notifications are: email, sms and slack.
+For example: email notification is always sent because we always know the email address; sms notification is sent only if the user added his phone number in his profile; the slack notification is sent only for members that are part of the Slack&#39;s organization Talent Garden.</p>
+
+<p>The API response describe which kind of notifications we were able to delivery to the campus member.</p>
+<pre class="highlight shell tab-shell"><code>curl https://api.talentgarden.net/guests/v1/registrations <span class="se">\</span>
+  --request POST <span class="se">\</span>
+  --data <span class="s1">'{"full_name": "Guest", "email": "guest@talentgarden.org", "company_name": "Guest Company", "looking_for": "member@talentgarden.org", "campus_name": "Tag Milano Calabiana", "telephones": ["+393334455666"]}'</span> <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slack"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.talentgarden.net/guests/v1/registrations</code></p>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>full_name</td>
+<td>true</td>
+<td>the guest&#39;s full name</td>
+</tr>
+<tr>
+<td>email</td>
+<td>true</td>
+<td>the guest&#39;s email address</td>
+</tr>
+<tr>
+<td>looking_for</td>
+<td>true</td>
+<td>the campus member email address. This will be use to fetch the user and, if it exists, to delivery the email.</td>
+</tr>
+<tr>
+<td>campus_name</td>
+<td>true</td>
+<td>the campus where the guest is. This name will be used in the notification message</td>
+</tr>
+<tr>
+<td>company_name</td>
+<td>false</td>
+<td>the company name where the guest work</td>
+</tr>
+<tr>
+<td>telephones</td>
+<td>false</td>
+<td>the phone numbers that will receive the SMS. For example: sending the value of this field as an array of two elements, both the numbers will receive the same SMS. Format each number with a &#39;+&#39; and a country code, e.g., +16175551212</td>
+</tr>
+<tr>
+<td>latitude</td>
+<td>false</td>
+<td>the latitude where the device that the guest is using is</td>
+</tr>
+<tr>
+<td>longitude</td>
+<td>false</td>
+<td>the longitude where the device that the guest is using is</td>
+</tr>
+<tr>
+<td>altitude</td>
+<td>false</td>
+<td>the altitude where the device that the guest is using is</td>
+</tr>
+</tbody></table>
 <h1 id='sms'>SMS</h1>
 <p>Using SMS REST API, you can send outgoing SMS messages from an alphanumeric sender ID identifier to mobile phones around the globe.</p>
 
