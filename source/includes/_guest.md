@@ -1,5 +1,5 @@
-# Guests
-Guests REST API allows you to register one or more people that are visiting a campus member.
+# Guest
+Guest REST API service allows you to register one or more people that are visiting a campus member.
 
 ## Registration
 This endpoint allow you to create a new guest Registration.
