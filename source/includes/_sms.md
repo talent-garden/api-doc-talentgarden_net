@@ -1,11 +1,14 @@
 # SMS
+<aside class="warning-white">Authentication type: <b>Api Key</b></aside>
 Using SMS REST API, you can send outgoing SMS messages from an alphanumeric sender ID identifier to mobile phones around the globe.
 
 An alphanumeric sender ID of up to 11 characters can be used for sending messages. To use an alphanumeric sender ID for sending messages, input your ID in the `from` parameter of your API request.
 Alphanumeric Sender ID messages are one-way only, as users will be unable to directly reply to messages not sent from a phone number.
 
 
-## Message
+## Messages
+
+### Create a message
 This endpoint allow you to send a new outgoing message from an alphanumeric ID to an outside number.
 
 ```shell
@@ -45,11 +48,11 @@ curl https://api.talentgarden.net/sms/v1/messages \
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
 `POST https://api.talentgarden.net/sms/v1/messages`
 
-### Body Parameters
+#### Body Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------

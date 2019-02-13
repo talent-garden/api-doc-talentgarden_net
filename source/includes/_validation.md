@@ -87,17 +87,17 @@ curl "https://api.talentgarden.net/validation/v1/iban?iban=IT60X0542811101000000
 
 This endpoint performs IBAN validation.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.talentgarden.net/validation/v1/iban?iban=:iban`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------
 iban | true | the IBAN you want to validate
 
-### Codes
+#### Codes
 The `validation` object is composed from multiple objects and each one with its own code, this is codes map:
 
 Code | Meaning | Description
@@ -159,11 +159,11 @@ curl "https://api.talentgarden.net/validation/v1/vat?vat=IT03340710981" \
 
 This endpoint performs VAT number validation.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.talentgarden.net/validation/v1/vat?vat=:vat`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------
