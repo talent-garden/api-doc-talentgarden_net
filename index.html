@@ -223,6 +223,14 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-key" class="toc-h2 toc-link" data-title="API Key">API Key</a>
+                  </li>
+                  <li>
+                    <a href="#json-web-token" class="toc-h2 toc-link" data-title="JSON Web Token">JSON Web Token</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#enrichment" class="toc-h1 toc-link" data-title="Enrichment">Enrichment</a>
@@ -242,7 +250,12 @@
             <a href="#guest" class="toc-h1 toc-link" data-title="Guest">Guest</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#registration" class="toc-h2 toc-link" data-title="Registration">Registration</a>
+                    <a href="#registrations" class="toc-h2 toc-link" data-title="Registrations">Registrations</a>
+                      <ul class="toc-list-h3">
+                  <li>
+                    <a href="#create-a-registration" class="toc-h3 toc-link" data-title="Create a registration">Create a registration</a>
+                  </li>
+              </ul>
                   </li>
               </ul>
           </li>
@@ -250,7 +263,25 @@
             <a href="#sms" class="toc-h1 toc-link" data-title="SMS">SMS</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#message" class="toc-h2 toc-link" data-title="Message">Message</a>
+                    <a href="#messages" class="toc-h2 toc-link" data-title="Messages">Messages</a>
+                      <ul class="toc-list-h3">
+                  <li>
+                    <a href="#create-a-message" class="toc-h3 toc-link" data-title="Create a message">Create a message</a>
+                  </li>
+              </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#members" class="toc-h2 toc-link" data-title="Members">Members</a>
+                      <ul class="toc-list-h3">
+                  <li>
+                    <a href="#get-member-profile" class="toc-h3 toc-link" data-title="Get member profile">Get member profile</a>
+                  </li>
+              </ul>
                   </li>
               </ul>
           </li>
@@ -270,7 +301,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='mailto:digital@talentgarden.org?subject=API key request'>Request an API key</a></li>
+            <li><a href='mailto:digital@talentgarden.org?subject=API Access'>Request API access</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -281,6 +312,20 @@
 
 <p>We have language bindings in Shell and you can view code examples in the dark area to the right.</p>
 <h1 id='authentication'>Authentication</h1>
+<p>Authentication method changes based on the APIs service you need to call.
+Talent Garden uses two different types of authentication:</p>
+
+<ol>
+<li><b>API Key</b></li>
+<li><b>JSON Web Token (JWT)</b></li>
+</ol>
+
+<p>In each API service main section (Guest, User, SMS) is described the authentication method required from that service.
+Every API service supports only one type of authentication method, so if for example the User service requires JWT authentication does not accept API Key authentication.</p>
+
+<p>Some of our API services, like for example the <a href="/#enrichment">Enrichment API</a>, can be used client side after that the domain has been whitelisted from us.<br>
+<a href="mailto:digital@talentgarden.org?subject=[API Request] domain whitelist">Click here</a> to submit a request to whitelist your domain specifying what you are developing and how this access can help you to speed up the development process or to improve the user experience.</p>
+<h2 id='api-key'>API Key</h2>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
@@ -292,9 +337,12 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code>YOUR_API_KEY</code> with your API key.</p>
 </blockquote>
 
-<p>Talent Garden uses API keys to allow access to the API. You can request an API key <a href='mailto:digital@talentgarden.org?subject=API key request'>getting in touch with us</a>.</p>
+<p>API key allows to access to some of our API services.
+This kind of authentication is often used for server to server comminication because API Key does not expire. For this way we highly reccomend to not expose the API Key client-side.</p>
 
-<p>Talent Garden expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>You can request an API key <a href='mailto:digital@talentgarden.org?subject=API key request'>getting in touch with us</a>.</p>
+
+<p>Talent Garden expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>x-api-key: YOUR_API_KEY</code></p>
 
@@ -302,10 +350,37 @@ curl <span class="s2">"api_endpoint_here"</span>
 You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </aside>
 
-<p>Some of our API endpoints, like for example the <a href="/#enrichment">Enrichment API</a>, can be used client side after that the domain has been whitelisted from us.<br>
-<a href="mailto:digital@talentgarden.org?subject=[API Request] domain whitelist">Click here</a> to submit a request to whitelist your domain specifying what you are developing and how this access can help you to speed up the development process or to improve the user experience.</p>
+<p>Your API keys carry many privileges, so be sure to keep them secure! 
+Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+<h2 id='json-web-token'>JSON Web Token</h2>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: Bearer YOUR_JWT"</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>YOUR_JWT</code> with your JWT.</p>
+</blockquote>
+
+<p>JSON Web Token (JWT) authentication is used to call API Services personifying a specific logged user.
+The JWT must be issued from one of our applications registered in our Auth0 tenants.</p>
+
+<p>To make calls to the API, send the JWT in the Authorization HTTP header using the Bearer authentication scheme.
+Talent Garden expects the JWT to be included in all API requests from the client in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer YOUR_JWT</code></p>
+
+<aside class="notice">
+You must replace <code>YOUR_JWT</code> a valid Auth0 issued token.
+</aside>
+
+<p>You can request an Auth0 OAuth2 client <a href='mailto:digital@talentgarden.org?subject=Auth0 OAuth2 client request'>getting in touch with us</a>.</p>
 <h1 id='enrichment'>Enrichment</h1>
-<p>The Enrichment API lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.</p>
+<aside class="warning-white">Authentication type: <b>Api Key</b></aside>
+
+<p>The Enrichment API service lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.</p>
 <h2 id='combined'>Combined</h2>
 <p>A common use-case is looking up a person and company simultaneously based on a email address. To save you making two requests to do this, we offer a combined lookup API.</p>
 
@@ -507,9 +582,9 @@ You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all informations about a company.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h4 id='http-request'>HTTP Request</h4>
 <p><code>GET https://api.talentgarden.net/enrichment/v1/combined?email=:email</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h4 id='query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -647,9 +722,9 @@ You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all informations about a company.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h4 id='http-request-2'>HTTP Request</h4>
 <p><code>GET https://api.talentgarden.net/enrichment/v1/companies?domain=:domain</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h4 id='query-parameters-2'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -754,9 +829,9 @@ You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all informations about a person.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h4 id='http-request-3'>HTTP Request</h4>
 <p><code>GET https://api.talentgarden.net/enrichment/v1/people?email=:email</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h4 id='query-parameters-3'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -776,14 +851,14 @@ You must replace <code>YOUR_API_KEY</code> with your personal API key.
 </aside>
 <h1 id='guest'>Guest</h1>
 <p>Guest REST API service allows you to register one or more people that are visiting a campus member.</p>
-<h2 id='registration'>Registration</h2>
+<h2 id='registrations'>Registrations</h2><h3 id='create-a-registration'>Create a registration</h3>
 <p>This endpoint allow you to create a new guest Registration.
 When a Registration is created, the campus member receives three different notifications based on informations we know about him.
 Notifications are: email, sms and slack.
 For example: email notification is always sent because we always know the email address; sms notification is sent only if the user added his phone number in his profile; the slack notification is sent only for members that are part of the Slack&#39;s organization Talent Garden.</p>
 
 <p>The API response describe which kind of notifications we were able to delivery to the campus member.</p>
-<pre class="highlight shell tab-shell"><code>curl https://api.talentgarden.net/guests/v1/registrations <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl https://api.talentgarden.net/guest/v1/registrations <span class="se">\</span>
   --request POST <span class="se">\</span>
   --data <span class="s1">'{"full_name": "Guest", "email": "guest@talentgarden.org", "company_name": "Guest Company", "looking_for": "member@talentgarden.org", "campus_name": "Tag Milano Calabiana", "telephones": ["+393334455666"]}'</span> <span class="se">\</span>
   --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
@@ -796,9 +871,9 @@ For example: email notification is always sent because we always know the email 
     </span><span class="s2">"sms"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="s2">"slack"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>POST https://api.talentgarden.net/guests/v1/registrations</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+</span></code></pre><h4 id='http-request'>HTTP Request</h4>
+<p><code>POST https://api.talentgarden.net/guest/v1/registrations</code></p>
+<h4 id='body-parameters'>Body Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -853,11 +928,13 @@ For example: email notification is always sent because we always know the email 
 </tr>
 </tbody></table>
 <h1 id='sms'>SMS</h1>
+<aside class="warning-white">Authentication type: <b>Api Key</b></aside>
+
 <p>Using SMS REST API, you can send outgoing SMS messages from an alphanumeric sender ID identifier to mobile phones around the globe.</p>
 
 <p>An alphanumeric sender ID of up to 11 characters can be used for sending messages. To use an alphanumeric sender ID for sending messages, input your ID in the <code>from</code> parameter of your API request.
 Alphanumeric Sender ID messages are one-way only, as users will be unable to directly reply to messages not sent from a phone number.</p>
-<h2 id='message'>Message</h2>
+<h2 id='messages'>Messages</h2><h3 id='create-a-message'>Create a message</h3>
 <p>This endpoint allow you to send a new outgoing message from an alphanumeric ID to an outside number.</p>
 <pre class="highlight shell tab-shell"><code>curl https://api.talentgarden.net/sms/v1/messages <span class="se">\</span>
   --request POST <span class="se">\</span>
@@ -892,9 +969,9 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
     </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+393334455666"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/2010-04-01/Accounts/ACe216cab89d888c5cb280335ef76df4c3/Messages/SM82743a9aab8f47259529a0776fe45eb4.json"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h4 id='http-request'>HTTP Request</h4>
 <p><code>POST https://api.talentgarden.net/sms/v1/messages</code></p>
-<h3 id='body-parameters'>Body Parameters</h3>
+<h4 id='body-parameters'>Body Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -921,6 +998,143 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
 <td>country</td>
 <td>true</td>
 <td>the ISO country code where is the campus that is sending the SMS. Right now only <code>IT</code> is allowed</td>
+</tr>
+</tbody></table>
+<h1 id='user'>User</h1>
+<aside class="warning-white">Authentication type: <b>JSON Web Token</b></aside>
+
+<p>The User API service lets you to manage different types of user entities. Right now only Members are available.</p>
+<h2 id='members'>Members</h2><h3 id='get-member-profile'>Get member profile</h3>
+<p>This endpoint allow you to retrieve user profile information that, for example, can be used to personalize the experience of people interacting with your App.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api.talentgarden.net/user/v1/members/:auth0_id/profile"</span> <span class="se">\</span>
+  --header <span class="s2">"Authentication: Bearer YOUR_JWT"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3763</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"davide.dattoli@talentgarden.org"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Davide"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dattoli"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://talentgarden.org/davide.png"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"biography"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Help people succeed"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEO"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"telephones"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3332345678"</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"customers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden S.p.A"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"credits"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1470</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}],</span><span class="w">
+    </span><span class="s2">"privacy_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"marketing_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"profiling_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"branches"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Talent Garden S.p.A"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://people.talentgarden.org/uploads/images/logo.png"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cover_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://people.talentgarden.org/uploads/images/cover.jpeg"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"members_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"registration_wizard_completed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"has_approved_subscription"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"content_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"post"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"idea_entity"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"event"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"project"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"workgroup"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"idea"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"media"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"request_offer"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"new_content_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idea_entity"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idea_entity"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"event"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"project"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workgroup"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"workgroup"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idea"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"idea"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"media"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_offer"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"filtering_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request_offer"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"share_data_consent"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">165</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software Engineering"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">227</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Databases"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1405</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Scalability"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"interests"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Technology"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Photography"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Software Design"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all informations member profile.</p>
+<h4 id='http-request'>HTTP Request</h4>
+<p><code>GET https://api.talentgarden.net/user/v1/members/:auth0_id/profile</code></p>
+<h4 id='url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>auth0_id</td>
+<td>true</td>
+<td>the Auth0 identifier in the form &quot;auth0&#124;identifier&quot;. This value is contained in the key <code>sub</code> of the JWT</td>
 </tr>
 </tbody></table>
 <h1 id='validation'>Validation</h1>
@@ -1008,9 +1222,9 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint performs IBAN validation.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h4 id='http-request'>HTTP Request</h4>
 <p><code>GET https://api.talentgarden.net/validation/v1/iban?iban=:iban</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h4 id='query-parameters'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1024,7 +1238,7 @@ Alphanumeric Sender ID messages are one-way only, as users will be unable to dir
 <td>the IBAN you want to validate</td>
 </tr>
 </tbody></table>
-<h3 id='codes'>Codes</h3>
+<h4 id='codes'>Codes</h4>
 <p>The <code>validation</code> object is composed from multiple objects and each one with its own code, this is codes map:</p>
 
 <table><thead>
@@ -1137,9 +1351,9 @@ The <code>address</code> object is obtained from the <code>company_address</code
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint performs VAT number validation.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h4 id='http-request-2'>HTTP Request</h4>
 <p><code>GET https://api.talentgarden.net/validation/v1/vat?vat=:vat</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h4 id='query-parameters-2'>Query Parameters</h4>
 <table><thead>
 <tr>
 <th>Parameter</th>
