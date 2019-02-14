@@ -1,5 +1,6 @@
 # Enrichment
-The Enrichment API lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.
+<aside class="warning-white">Authentication type: <b>Api Key</b></aside>
+The Enrichment API service lets you look up person and company data based on an email or domain. For example, you could retrieve a person’s name, location and social handles from an email. Or you could lookup a company’s location, headcount or logo based on their domain name.
 
 ## Combined
 A common use-case is looking up a person and company simultaneously based on a email address. To save you making two requests to do this, we offer a combined lookup API.
@@ -208,11 +209,11 @@ curl "https://api.talentgarden.net/enrichment/v1/combined?email=davide.dattoli@t
 
 This endpoint retrieves all informations about a company.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.talentgarden.net/enrichment/v1/combined?email=:email`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------
@@ -349,11 +350,11 @@ curl "https://api.talentgarden.net/enrichment/v1/companies?domain=talentgarden.o
 
 This endpoint retrieves all informations about a company.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.talentgarden.net/enrichment/v1/companies?domain=:domain`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------
@@ -455,11 +456,11 @@ curl "https://api.talentgarden.net/enrichment/v1/people?email=davide.dattoli@tal
 
 This endpoint retrieves all informations about a person.
 
-### HTTP Request
+#### HTTP Request
 
 `GET https://api.talentgarden.net/enrichment/v1/people?email=:email`
 
-### Query Parameters
+#### Query Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------

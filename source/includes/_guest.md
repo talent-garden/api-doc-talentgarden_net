@@ -1,7 +1,9 @@
 # Guest
 Guest REST API service allows you to register one or more people that are visiting a campus member.
 
-## Registration
+## Registrations
+
+### Create a registration
 This endpoint allow you to create a new guest Registration.
 When a Registration is created, the campus member receives three different notifications based on informations we know about him.
 Notifications are: email, sms and slack.
@@ -10,7 +12,7 @@ For example: email notification is always sent because we always know the email 
 The API response describe which kind of notifications we were able to delivery to the campus member.
 
 ```shell
-curl https://api.talentgarden.net/guests/v1/registrations \
+curl https://api.talentgarden.net/guest/v1/registrations \
   --request POST \
   --data '{"full_name": "Guest", "email": "guest@talentgarden.org", "company_name": "Guest Company", "looking_for": "member@talentgarden.org", "campus_name": "Tag Milano Calabiana", "telephones": ["+393334455666"]}' \
   --header "Content-Type: application/json" \
@@ -26,11 +28,11 @@ curl https://api.talentgarden.net/guests/v1/registrations \
 }
 ```
 
-### HTTP Request
+#### HTTP Request
 
-`POST https://api.talentgarden.net/guests/v1/registrations`
+`POST https://api.talentgarden.net/guest/v1/registrations`
 
-### Body Parameters
+#### Body Parameters
 
 Parameter | Required | Description
 --------- | ------- | -----------

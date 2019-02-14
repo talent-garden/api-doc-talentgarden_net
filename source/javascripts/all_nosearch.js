@@ -2,15 +2,16 @@
 //= require ./app/_toc
 //= require ./app/_lang
 
-$(function() {
-  loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
+$(function () {
+  // loadToc($('#toc'), '.toc-link', '.toc-list-h2', 10);
+  loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3', 10);
   setupLanguages($('body').data('languages'));
-  $('.content').imagesLoaded( function() {
+  $('.content').imagesLoaded(function () {
     window.recacheHeights();
     window.refreshToc();
   });
 });
 
-window.onpopstate = function() {
+window.onpopstate = function () {
   activateLanguage(getLanguageFromQueryString());
 };
