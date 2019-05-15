@@ -260,6 +260,19 @@
               </ul>
           </li>
           <li>
+            <a href="#notification" class="toc-h1 toc-link" data-title="Notification">Notification</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#emails" class="toc-h2 toc-link" data-title="Emails">Emails</a>
+                      <ul class="toc-list-h3">
+                  <li>
+                    <a href="#send-email-with-template" class="toc-h3 toc-link" data-title="Send email with template">Send email with template</a>
+                  </li>
+              </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#sms" class="toc-h1 toc-link" data-title="SMS">SMS</a>
               <ul class="toc-list-h2">
                   <li>
@@ -925,6 +938,97 @@ For example: email notification is always sent because we always know the email 
 <td>altitude</td>
 <td>false</td>
 <td>the altitude where the device that the guest is using is</td>
+</tr>
+</tbody></table>
+<h1 id='notification'>Notification</h1>
+<aside class="warning-white">Authentication type: <b>Api Key</b></aside>
+
+<p>Notification REST API service allows you to get in touch with our members using different channels.</p>
+<h2 id='emails'>Emails</h2><h3 id='send-email-with-template'>Send email with template</h3>
+<p>This endpoint allow you to send an email specifing an existing template.
+Template is dynamically populated and every template required its own <code>template_data</code> object based on how the templated has been realized.</p>
+
+<p>The API response returns 200 if the email can be queued to be sent.</p>
+<pre class="highlight shell tab-shell"><code>curl https://api.talentgarden.net/notification/v1/emails/d-6e84a13f03a848d68985b2c4de89f29c <span class="se">\</span>
+  --request POST <span class="se">\</span>
+  --data <span class="s1">'{
+      "from": {
+        "email": "info@talentgarden.net",
+        "name": "Talent Garden"
+      },
+      "to": "davide.dattoli@talentgarden.com",
+      "cc": ["davide.dattoli@talentgarden.com"],
+      "bcc": ["davide.dattoli@talentgarden.com"],
+      "categories": ["marketing", "newsletter"],
+      "template_data": {
+        "subject": "My subject",
+        "text": "Hello world!"
+      }
+    }'</span> <span class="se">\</span>
+  --header <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{}</span><span class="w">
+</span></code></pre><h4 id='http-request'>HTTP Request</h4>
+<p><code>POST https://api.talentgarden.net/notification/v1/emails/:templateId</code></p>
+<h4 id='url-parameters'>URL Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>templateId</td>
+<td>true</td>
+<td>the id of the template to use. Please get in touch with us if you are not sure which id to use.</td>
+</tr>
+</tbody></table>
+<h4 id='body-parameters'>Body Parameters</h4>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>from.email</td>
+<td>true</td>
+<td>the email address to use as sender. We only accept email addresses under <b>talentgarden.net</b> domain</td>
+</tr>
+<tr>
+<td>from.name</td>
+<td>false</td>
+<td>the sender name</td>
+</tr>
+<tr>
+<td>to</td>
+<td>true</td>
+<td>the recipient(s) of the email to be sent. In case of one recipient this value can is a string while if there are multiple recipients this value is an array of strings (email addresses)</td>
+</tr>
+<tr>
+<td>categories</td>
+<td>true</td>
+<td>array of strings of how the email can be categorized. Ex: <code>marking</code> or <code>newsletter</code></td>
+</tr>
+<tr>
+<td>template_data</td>
+<td>true</td>
+<td>this object must contain all the data required from the template you are using. In order to use the template correctly we suggest to review how it has been built</td>
+</tr>
+<tr>
+<td>cc</td>
+<td>false</td>
+<td>the recipient(s) of the email that must be in CC. In case of one recipient this value can is a string while if there are multiple recipients this value is an array of strings (email addresses)</td>
+</tr>
+<tr>
+<td>bcc</td>
+<td>false</td>
+<td>the recipient(s) of the email that must be in BCC. In case of one recipient this value can is a string while if there are multiple recipients this value is an array of strings (email addresses)</td>
 </tr>
 </tbody></table>
 <h1 id='sms'>SMS</h1>
