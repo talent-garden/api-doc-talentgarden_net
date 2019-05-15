@@ -11,6 +11,7 @@ includes:
   - authentication
   - enrichment
   - guest
+  - notification
   - sms
   - user
   - validation
