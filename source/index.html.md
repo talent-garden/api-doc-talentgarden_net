@@ -8,6 +8,7 @@ toc_footers:
   - <a href='mailto:digital@talentgarden.org?subject=API Access'>Request API access</a>
 
 includes:
+  - api_setup
   - authentication
   - enrichment
   - guest
