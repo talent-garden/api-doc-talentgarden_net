@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - api_setup
   - authentication
+  - customer
   - enrichment
   - guest
   - notification
